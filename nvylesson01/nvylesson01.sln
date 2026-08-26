@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37614.0 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nvylesson01", "nvylesson01.csproj", "{831FF2BF-A9AB-447A-91F8-1662F3920007}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nvylesson1Mvc", "..\nvylesson1Mvc\nvylesson1Mvc.csproj", "{0A7E7E50-C6D6-4312-9020-F489B98E6AE7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{831FF2BF-A9AB-447A-91F8-1662F3920007}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{831FF2BF-A9AB-447A-91F8-1662F3920007}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{831FF2BF-A9AB-447A-91F8-1662F3920007}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{831FF2BF-A9AB-447A-91F8-1662F3920007}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A7E7E50-C6D6-4312-9020-F489B98E6AE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A7E7E50-C6D6-4312-9020-F489B98E6AE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A7E7E50-C6D6-4312-9020-F489B98E6AE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A7E7E50-C6D6-4312-9020-F489B98E6AE7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DA771CAA-319F-452C-84B1-73321E61B068}
+	EndGlobalSection
+EndGlobal
