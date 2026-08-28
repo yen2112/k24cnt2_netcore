@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("nvylesson02Theory")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c092f5a0886c6bbb0180fa745e09d0bb9bcc9258")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5665171b7e395c0c1b146b8c030be1cc2048c90f")]
 [assembly: System.Reflection.AssemblyProductAttribute("nvylesson02Theory")]
 [assembly: System.Reflection.AssemblyTitleAttribute("nvylesson02Theory")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

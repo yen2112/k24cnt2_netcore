@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Danh sach san pham";
+
+    var products = ViewData["products"] as List<nvylesson03.Models.nvyproduct>;
+}
+<div class="card">
+    <div class="card-header">
+        <h1>@ViewData["Title"]</h1>
+    </div>
+    <div class="card-body">
+@model List<nvyproduct>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Year Release</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.nvyProducdID</td>
+                        <td>@item.nvyProductName</td>
+                        <td>@item.nvyYearRelease</td>
+                        <td>@item.nvyPrice</td>
+                        <td>
+                            <a href="#" class="btn btn-info">Xem chi tiết</a>
+                            <a href="#" class="btn btn-warning">Sửa</a>
+                            <a href="#" class="btn btn-danger">Xóa</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
