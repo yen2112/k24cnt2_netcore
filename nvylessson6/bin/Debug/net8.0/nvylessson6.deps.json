@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "nvylessson6/1.0.0": {
+        "runtime": {
+          "nvylessson6.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "nvylessson6/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

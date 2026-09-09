@@ -1,0 +1,136 @@
+@{
+    ViewData["Title"] = "Bài 6: Nguyen Van Yen - 2410900091";
+}
+
+<!-- Section S1 theo Slide 18 -->
+@section S1 {
+    <div class="alert alert-primary shadow-sm mb-3 border-primary">
+        <div class="d-flex justify-content-between align-items-center flex-wrap">
+            <h3 class="mb-0 text-primary fw-bold">
+                <i class="bi bi-person-circle me-2"></i>Sinh Viên: Nguyễn Văn Yến - MSV: 2410900091
+            </h3>
+            <span class="badge bg-primary fs-6">K24CNT2</span>
+        </div>
+        <small class="text-muted">(Phần đầu trang sinh ra tại vị trí RenderSection S1 trong _Layout.cshtml)</small>
+    </div>
+}
+
+<div class="container my-4">
+    <!-- Banner Thông tin sinh viên thực hiện -->
+    <div class="card mb-4 border-primary shadow-sm">
+        <div class="card-body bg-light text-center py-3">
+            <h2 class="text-primary fw-bold mb-1">BÀI BÁO CÁO BÀI 6: ASP.NET CORE VIEWS & VIEW COMPONENTS</h2>
+            <h4 class="text-dark mb-0">Họ và tên: <span class="text-danger fw-bold">Nguyễn Văn Yến</span> | Mã SV: <span class="badge bg-danger fs-5">2410900091</span></h4>
+        </div>
+    </div>
+
+    <h3 class="text-secondary text-center mb-4">Nội dung sinh ra tại vị trí RenderBody!</h3>
+
+    <!-- 1. Gọi PartialView Header -->
+    <div class="card mb-4 border-info">
+        <div class="card-header bg-info text-white">
+            <h4 class="mb-0">1. Nhúng PartialView Header (_HeaderPartialView.cshtml)</h4>
+        </div>
+        <div class="card-body">
+            @await Html.PartialAsync("_HeaderPartialView")
+        </div>
+    </div>
+
+    <!-- 2. Gọi View Component Category (Có và Không Có Tham Số) -->
+    <div class="card mb-4 border-dark">
+        <div class="card-header bg-dark text-white">
+            <h4 class="mb-0">2. Nhúng & Truyền Tham Số Cho View Component (CategoryViewComponent)</h4>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <!-- Trường hợp 1: Không truyền tham số n (Lấy toàn bộ CategoryId > 0) -->
+                <div class="col-md-6 mb-3">
+                    <div class="border p-2 rounded bg-light">
+                        <h6 class="text-primary">Gọi không truyền tham số: <code>@("@await Component.InvokeAsync(\"Category\")")</code></h6>
+                        @await Component.InvokeAsync("Category")
+                    </div>
+                </div>
+
+                <!-- Trường hợp 2: Truyền tham số n = 2 (Lọc ra các CategoryId > 2) -->
+                <div class="col-md-6 mb-3">
+                    <div class="border p-2 rounded bg-light">
+                        <h6 class="text-danger">Gọi truyền tham số <code>new { n = 2 }</code>: <code>@("@await Component.InvokeAsync(\"Category\", new { n = 2 })")</code></h6>
+                        @await Component.InvokeAsync("Category", new { n = 2 })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Gọi Action GetProductHot trả về PartialView -->
+    <div class="card mb-4 border-danger">
+        <div class="card-header bg-danger text-white d-flex justify-content-between align-items-center">
+            <h4 class="mb-0">3. Gọi Action / AJAX trả về PartialView (_ProductHotPartialView.cshtml)</h4>
+            <a href="/Home/GetProductHot" target="_blank" class="btn btn-sm btn-light">Mở trực tiếp Action GetProductHot</a>
+        </div>
+        <div class="card-body">
+            @await Html.PartialAsync("_ProductHotPartialView", new List<nvylessson6.Models.Product>
+            {
+                new nvylessson6.Models.Product { Id = 1, Name = "Laptop Dell XPS 15", Price = 35000000, Image = "icon1.png" },
+                new nvylessson6.Models.Product { Id = 2, Name = "iPhone 15 Pro Max", Price = 30000000, Image = "icon2.png" },
+                new nvylessson6.Models.Product { Id = 3, Name = "Samsung Galaxy S24 Ultra", Price = 28000000, Image = "icon3.png" }
+            })
+        </div>
+    </div>
+
+    <!-- 4. Cú pháp Razor & Cấu trúc lặp -->
+    <div class="card mb-4 border-success">
+        <div class="card-header bg-success text-white">
+            <h4 class="mb-0">4. Cú pháp Razor C#, If...Else & Cấu trúc lặp</h4>
+        </div>
+        <div class="card-body">
+            @{ var total = 7000; }
+            @{ var myMessage = "Biết người là trí, biết bản thân mới là trí tuệ thật sự. Thắng người là sự mạnh mẽ, thắng bản thân mới là sức mạnh thực sự"; }
+
+            <p><strong>Sinh viên thực hiện:</strong> Nguyễn Văn Yến (MSV: 2410900091)</p>
+            <p><strong>Tài khoản của bạn đang có:</strong> $ @total</p>
+            <p><strong>Câu nói để đời của Lão Tử:</strong> @myMessage</p>
+
+            @if (total >= 5000)
+            {
+                <p class="text-success fw-bold">Bạn nằm trong số 30% những người giàu nhất thế giới</p>
+            }
+
+            <h5 class="mt-3">Vòng lặp rendering buttons:</h5>
+            <div class="mb-3">
+                @for (int i = 0; i < 10; i++)
+                {
+                    if (i % 2 == 0)
+                    {
+                        <span class="btn btn-danger me-1 mb-1">@i</span>
+                    }
+                    else
+                    {
+                        <span class="btn btn-success me-1 mb-1">@i</span>
+                    }
+                }
+            </div>
+
+            <h5 class="mt-3">Vòng lặp rendering danh sách hình ảnh (foreach):</h5>
+            <div class="d-flex flex-wrap gap-2 align-items-center">
+                @{
+                    string[] images = { "icon1.png", "icon2.png", "icon3.png", "icon4.png", "icon5.png", "icon6.png" };
+                    foreach (var c in images)
+                    {
+                        <img src="/images/@c" width="80" class="img-thumbnail" alt="@c" />
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section S2 theo Slide 18 -->
+@section S2 {
+    <script>
+        function checkStatus() {
+            alert('OK - SV Nguyễn Văn Yến (2410900091) - Hàm checkStatus() chạy thành công từ @@section S2!');
+        }
+        console.log("Section S2 JavaScript has been rendered successfully for student Nguyen Van Yen (2410900091).");
+    </script>
+}

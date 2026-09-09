@@ -1,0 +1,16 @@
+@model IEnumerable<nvylessson6.Models.Category>
+
+<div class="bg-danger text-white p-3 rounded" style="margin-top:10px;">
+    <h5 class="fw-bold mb-3 border-bottom pb-2">Category ViewComponent</h5>
+    @if (Model != null && Model.Any())
+    {
+        @foreach (var c in Model)
+        {
+            <p class="mb-1 fw-bold">&bull; @c.CategoryName <span class="badge bg-light text-danger ms-1">(ID: @c.CategoryId)</span></p>
+        }
+    }
+    else
+    {
+        <p class="mb-0">Không có danh mục phù hợp.</p>
+    }
+</div>

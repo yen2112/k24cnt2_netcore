@@ -1,0 +1,29 @@
+@model IEnumerable<nvylessson6.Models.Product>
+
+<div class="border border-danger rounded p-3 bg-light">
+    <h3 class="text-danger mb-3"><i class="bi bi-fire"></i> SẢN PHẨM HOT (PartialView)</h3>
+    <div class="row row-cols-1 row-cols-md-3 g-3">
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var item in Model)
+            {
+                <div class="col">
+                    <div class="card h-100 border-danger shadow-sm">
+                        <img src="/images/@item.Image" class="card-img-top p-2" alt="@item.Name" style="height: 120px; object-fit: contain;">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary fs-6">@item.Name</h5>
+                            <p class="card-text text-danger fw-bold mb-0">@item.Price.ToString("N0") VNĐ</p>
+                        </div>
+                        <div class="card-footer bg-transparent border-0 text-end">
+                            <button class="btn btn-sm btn-outline-danger">Mua Ngay</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p class="text-muted">Không có sản phẩm nổi bật nào.</p>
+        }
+    </div>
+</div>
