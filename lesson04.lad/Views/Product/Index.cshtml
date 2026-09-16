@@ -1,0 +1,71 @@
+@model IEnumerable<lesson04.lad.Models.Product>
+
+@{
+    ViewData["Title"] = "Quản lý sản phẩm";
+    var categories = ViewBag.Categories as List<lesson04.lad.Models.Category> ?? new List<lesson04.lad.Models.Category>();
+}
+
+<h2>Quản lý sản phẩm (Product Management)</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Thêm sản phẩm mới</a>
+</p>
+
+<table class="table table-bordered table-hover align-middle">
+    <thead class="table-dark">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Id)</th>
+            <th>@Html.DisplayNameFor(model => model.Image)</th>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.CategoryId)</th>
+            <th>@Html.DisplayNameFor(model => model.Price)</th>
+            <th>@Html.DisplayNameFor(model => model.SalePrice)</th>
+            <th>@Html.DisplayNameFor(model => model.Status)</th>
+            <th>@Html.DisplayNameFor(model => model.CreatedDate)</th>
+            <th style="width: 200px;">Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        var categoryName = categories.FirstOrDefault(c => c.Id == item.CategoryId)?.Name ?? "Chưa xếp loại";
+        <tr>
+            <td>@item.Id</td>
+            <td>
+                @if (!string.IsNullOrEmpty(item.Image))
+                {
+                    <img src="~/@item.Image" alt="@item.Name" style="width:70px; height:70px; object-fit:cover;" class="img-thumbnail" />
+                }
+            </td>
+            <td><strong>@item.Name</strong></td>
+            <td><span class="badge bg-info text-dark">@categoryName</span></td>
+            <td>@item.Price.ToString("N0") VNĐ</td>
+            <td>
+                @if (item.SalePrice > 0)
+                {
+                    <span class="text-danger font-weight-bold">@item.SalePrice.ToString("N0") VNĐ</span>
+                }
+                else
+                {
+                    <span>-</span>
+                }
+            </td>
+            <td>
+                @if (item.Status)
+                {
+                    <span class="badge bg-success">Đang kinh doanh</span>
+                }
+                else
+                {
+                    <span class="badge bg-secondary">Tạm ngừng</span>
+                }
+            </td>
+            <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Sửa</a>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm text-white">Chi tiết</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
