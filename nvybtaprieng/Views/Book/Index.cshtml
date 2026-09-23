@@ -1,0 +1,63 @@
+@model IEnumerable<nvybtaprieng.Models.Book>
+
+@{
+    ViewData["Title"] = "Danh sách các cuốn sách";
+}
+
+<h2 class="mb-4">Danh sách các cuốn sách</h2>
+
+<form asp-action="Index" method="get" class="mb-4">
+    <div class="row g-2 align-items-center">
+        <div class="col-auto">
+            <select name="authorId" asp-items="ViewBag.Authors" class="form-select">
+                <option value="0">Chọn tác giả</option>
+            </select>
+        </div>
+        <div class="col-auto">
+            <select name="genreId" asp-items="ViewBag.Genres" class="form-select">
+                <option value="0">Chọn Thể loại</option>
+            </select>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+        </div>
+        <div class="col-auto">
+            <a asp-action="Create" class="btn btn-danger">Thêm mới</a>
+        </div>
+    </div>
+</form>
+
+<table class="table table-bordered table-striped align-middle">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Tiêu đề</th>
+            <th>Tác giả</th>
+            <th>Thể loại</th>
+            <th>Giá</th>
+            <th>Hình ảnh</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Title</td>
+                <td>@item.AuthorId</td>
+                <td>@item.GenreId</td>
+                <td>@item.Price</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.Image))
+                    {
+                        <img src="@item.Image" alt="@item.Title" style="max-height: 80px; max-width: 80px; object-fit: cover;" />
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Sửa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

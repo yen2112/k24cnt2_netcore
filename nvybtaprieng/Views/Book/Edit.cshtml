@@ -1,0 +1,51 @@
+@model nvybtaprieng.Models.Book
+
+@{
+    ViewData["Title"] = "Chỉnh sửa cuốn sách";
+}
+
+<h2>Chỉnh sửa cuốn sách</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit" method="post">
+            <input type="hidden" asp-for="Id" />
+
+            <div class="mb-3">
+                <label asp-for="Title" class="form-label">Tiêu đề</label>
+                <input asp-for="Title" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="AuthorId" class="form-label">Tác giả</label>
+                <select asp-for="AuthorId" asp-items="ViewBag.Authors" class="form-select">
+                    <option value="">-- Chọn tác giả --</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label asp-for="GenreId" class="form-label">Thể loại</label>
+                <select asp-for="GenreId" asp-items="ViewBag.Genres" class="form-select">
+                    <option value="">-- Chọn Thể loại --</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Price" class="form-label">Giá</label>
+                <input asp-for="Price" class="form-control" type="number" step="0.01" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Image" class="form-label">Hình ảnh (Đường dẫn)</label>
+                <input asp-for="Image" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="TotalPage" class="form-label">Số trang</label>
+                <input asp-for="TotalPage" class="form-control" type="number" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Sumary" class="form-label">Tóm tắt</label>
+                <textarea asp-for="Sumary" class="form-control" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Cập nhật</button>
+            <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+        </form>
+    </div>
+</div>

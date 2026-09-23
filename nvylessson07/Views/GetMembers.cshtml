@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Danh sách thành viên";
+}
+
+<div class="card p-3">
+    <h1>@ViewData["Title"]</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Member Id</th>
+                <th>User Name</th>
+                <th>Full Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var member in ViewBag.Members)
+            {
+                <tr>
+                    <td>@member.nvyMemberId</td>
+                    <td>@member.nvyUserName</td>
+                    <td>@member.nvyFullName</td>
+                    <td>@member.nvyEmail</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

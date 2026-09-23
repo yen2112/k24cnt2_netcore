@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("nvylesson03")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5665171b7e395c0c1b146b8c030be1cc2048c90f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3d4e94d8583b31c8ca2923ce189280060160fe80")]
 [assembly: System.Reflection.AssemblyProductAttribute("nvylesson03")]
 [assembly: System.Reflection.AssemblyTitleAttribute("nvylesson03")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

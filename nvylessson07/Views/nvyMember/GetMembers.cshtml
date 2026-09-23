@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Danh sách thành viên";
+}
+
+<div class="alert alert-info">
+    <h1>@ViewData["Title"]</h1>
+</div>
+
+@foreach (var member in ViewBag.Members)
+{
+    <div>
+        <p>MemberId: @member.nvyMemberId</p>
+        <p>UserName: @member.nvyUserName</p>
+        <p>FullName: @member.nvyFullName</p>
+        <p>Email: @member.nvyEmail</p>
+        <hr />
+    </div>
+}
