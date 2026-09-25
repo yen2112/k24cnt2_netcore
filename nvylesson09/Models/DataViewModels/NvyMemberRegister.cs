@@ -12,7 +12,7 @@ namespace namespace nvylesson09.Models.DataViewModels
 
         [DisplayName("Tên đăng nhập")]
         [Required(ErrorMessage = "Tên đăng nhập không để trống")]
-        [StringLength(20, MinimumLength = 3, ErrorMessage = "Tên đăng nhập có độ dài trong khoảng 3 - 20 ký tự")]
+        [StringLength(20,MinimumLength = 3,ErrorMessage = "Tên đăng nhập có độ dài trong khoảng 2 - 20 ký tự")]
         public string NvyUserName { get; set; }
 
         [DisplayName("Mật khẩu")]
