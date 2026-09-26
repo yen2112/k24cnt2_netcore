@@ -1,0 +1,69 @@
+@model NguyenVanYen2410900091_exam.Models.nvyStudent
+
+@{
+    ViewData["Title"] = "Thêm mới sinh viên";
+}
+
+<div class="container my-3">
+    <h2>Thêm mới sinh viên</h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="mb-3">
+                    <label asp-for="HvtName" class="form-label fw-bold"></label>
+                    <input asp-for="HvtName" class="form-control" placeholder="Nhập họ và tên..." />
+                    <span asp-validation-for="HvtName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="HvtGender" class="form-label fw-bold"></label>
+                    <select asp-for="HvtGender" class="form-select">
+                        <option value="">-- Chọn giới tính --</option>
+                        <option value="Nam">Nam</option>
+                        <option value="Nữ">Nữ</option>
+                        <option value="Khác">Khác</option>
+                    </select>
+                    <span asp-validation-for="HvtGender" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="HvtBirthDay" class="form-label fw-bold"></label>
+                    <input asp-for="HvtBirthDay" type="date" class="form-control" />
+                    <span asp-validation-for="HvtBirthDay" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="HvtEmail" class="form-label fw-bold"></label>
+                    <input asp-for="HvtEmail" type="email" class="form-control" placeholder="example@gmail.com" />
+                    <span asp-validation-for="HvtEmail" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="HvtPhone" class="form-label fw-bold"></label>
+                    <input asp-for="HvtPhone" class="form-control" placeholder="09xxxxxxxx" />
+                    <span asp-validation-for="HvtPhone" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3 form-check">
+                    <input asp-for="HvtActive" class="form-check-input" id="HvtActiveCheck" />
+                    <label class="form-check-label fw-bold" for="HvtActiveCheck">
+                        @Html.DisplayNameFor(model => model.HvtActive) (Đang học)
+                    </label>
+                    <span asp-validation-for="HvtActive" class="text-danger"></span>
+                </div>
+
+                <div class="mt-4">
+                    <input type="submit" value="Lưu sinh viên" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

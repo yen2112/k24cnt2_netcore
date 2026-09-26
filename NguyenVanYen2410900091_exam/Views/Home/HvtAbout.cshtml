@@ -1,0 +1,53 @@
+@{
+    ViewData["Title"] = "Thông tin sinh viên";
+}
+
+<div class="container my-4">
+    <div class="card shadow border-0">
+        <div class="card-header bg-primary text-white py-3">
+            <h3 class="mb-0"><i class="bi bi-person-badge"></i> THÔNG TIN SINH VIÊN DỰ THI</h3>
+        </div>
+        <div class="card-body p-4">
+            <div class="row align-items-center">
+                <div class="col-md-3 text-center mb-3 mb-md-0">
+                    <img src="https://via.placeholder.com/150" class="img-thumbnail rounded-circle shadow-sm" alt="Avatar Sinh Viên" style="width: 150px; height: 150px; object-fit: cover;" />
+                </div>
+                <div class="col-md-9">
+                    <table class="table table-bordered table-striped">
+                        <tbody>
+                            <tr>
+                                <th style="width: 30%;" class="bg-light">Họ và tên:</th>
+                                <td class="fw-bold text-primary fs-5">Nguyễn Văn Yên</td>
+                            </tr>
+                            <tr>
+                                <th class="bg-light">Mã sinh viên:</th>
+                                <td class="fw-bold fs-5">2410900091</td>
+                            </tr>
+                            <tr>
+                                <th class="bg-light">Lớp:</th>
+                                <td>K24CNT2</td>
+                            </tr>
+                            <tr>
+                                <th class="bg-light">Môn học:</th>
+                                <td>Lập trình ASP.NET Core MVC / EF Core</td>
+                            </tr>
+                            <tr>
+                                <th class="bg-light">Tên Project:</th>
+                                <td><code>NguyenVanYen2410900091_exam</code></td>
+                            </tr>
+                            <tr>
+                                <th class="bg-light">Database:</th>
+                                <td><code>HvtEmployee_2410900091_Db</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer bg-light text-end">
+            <a asp-controller="NvyStudents" asp-action="Index" class="btn btn-success">
+                <i class="bi bi-list-ul"></i> Quản lý danh sách sinh viên
+            </a>
+        </div>
+    </div>
+</div>

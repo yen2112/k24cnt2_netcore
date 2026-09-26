@@ -1,0 +1,65 @@
+@model NguyenVanYen2410900091_exam.Models.nvyStudent
+
+@{
+    ViewData["Title"] = "Chi tiết sinh viên";
+}
+
+<div class="container my-3">
+    <h2>Chi tiết sinh viên</h2>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.HvtName)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.HvtName)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.HvtGender)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.HvtGender)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.HvtBirthDay)
+        </dt>
+        <dd class="col-sm-9">
+            @Model.HvtBirthDay.ToString("dd/MM/yyyy")
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.HvtEmail)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.HvtEmail)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.HvtPhone)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.HvtPhone)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.HvtActive)
+        </dt>
+        <dd class="col-sm-9">
+            @if (Model.HvtActive)
+            {
+                <span class="badge bg-success">Đang học (Active)</span>
+            }
+            else
+            {
+                <span class="badge bg-secondary">Tạm dừng (Inactive)</span>
+            }
+        </dd>
+    </dl>
+    <div class="mt-3">
+        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning">Chỉnh sửa</a>
+        <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+    </div>
+</div>
