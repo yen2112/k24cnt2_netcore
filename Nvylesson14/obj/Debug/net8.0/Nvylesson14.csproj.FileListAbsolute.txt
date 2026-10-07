@@ -138,3 +138,4 @@ D:\netcore\k24cnt2_netcore\Nvylesson14\obj\Debug\net8.0\refint\Nvylesson14.dll
 D:\netcore\k24cnt2_netcore\Nvylesson14\obj\Debug\net8.0\Nvylesson14.pdb
 D:\netcore\k24cnt2_netcore\Nvylesson14\obj\Debug\net8.0\Nvylesson14.genruntimeconfig.cache
 D:\netcore\k24cnt2_netcore\Nvylesson14\obj\Debug\net8.0\ref\Nvylesson14.dll
+D:\netcore\k24cnt2_netcore\Nvylesson14\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
