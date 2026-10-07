@@ -1,0 +1,80 @@
+@{
+    ViewData["Title"] = "Demo Cookie (Client-side State)";
+    string currentTheme = ViewBag.Theme as string ?? "light";
+}
+
+<div class="container mt-4">
+    <div class="p-4 rounded shadow-sm bg-light border mb-4">
+        <h2 class="text-primary"><i class="bi bi-cookie"></i> Session 09: Quản lý trạng thái bằng Cookies</h2>
+        <p class="lead">Cookie là dữ liệu lưu trữ dưới dạng cặp Key-Value tại trình duyệt (Client-side).</p>
+        <hr />
+
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <i class="bi bi-check-circle-fill"></i> @TempData["Success"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-3">
+                    <div class="card-header bg-info text-white font-weight-bold">
+                        <i class="bi bi-eye"></i> Cookie hiện tại trong Request
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><strong>Nvy_UserName:</strong> @ViewBag.UserName</span>
+                            @if (ViewBag.UserName != "Chưa đăng nhập (Khách)")
+                            {
+                                <a asp-action="DeleteCookie" asp-route-key="Nvy_UserName" class="btn btn-sm btn-outline-danger">Xóa</a>
+                            }
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><strong>Nvy_Theme:</strong> <span class="badge bg-secondary">@ViewBag.Theme</span></span>
+                            <a asp-action="DeleteCookie" asp-route-key="Nvy_Theme" class="btn btn-sm btn-outline-danger">Xóa</a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><strong>Nvy_LastVisit:</strong> @ViewBag.LastVisit</span>
+                            <a asp-action="DeleteCookie" asp-route-key="Nvy_LastVisit" class="btn btn-sm btn-outline-danger">Xóa</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-primary text-white font-weight-bold">
+                        <i class="bi bi-pencil-square"></i> Đọc & Ghi Cookie Mới
+                    </div>
+                    <div class="card-body">
+                        <form asp-action="SavePreferences" method="post">
+                            <div class="mb-3">
+                                <label class="form-label">Tên người dùng (UserName):</label>
+                                <input type="text" name="userName" class="form-control" placeholder="Nhập tên của bạn..." />
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Chọn Giao Diện (Theme):</label>
+                                <select name="theme" class="form-select">
+                                    <option value="light">Sáng (Light Mode)</option>
+                                    <option value="dark">Tối (Dark Mode)</option>
+                                    <option value="blue">Xanh Dương (Blue Mode)</option>
+                                </select>
+                            </div>
+                            <div class="form-check mb-3">
+                                <input type="checkbox" name="rememberMe" value="true" class="form-check-input" id="rememberMe" />
+                                <label class="form-check-label" for="rememberMe">
+                                    Lưu Persistent Cookie (Duy trì 30 ngày)
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-save"></i> Ghi Cookie (Response.Cookies.Append)
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

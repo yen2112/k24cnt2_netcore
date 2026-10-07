@@ -1,0 +1,21 @@
+@{
+    ViewData["Title"] = "TempData.Keep() Demo Page";
+}
+
+<div class="container mt-4">
+    <div class="p-4 rounded shadow-sm bg-light border">
+        <h3 class="text-info"><i class="bi bi-shield-check"></i> Kiểm tra TempData.Keep()</h3>
+        <p class="lead">Trang này sử dụng <code>TempData.Keep("PersistentMsg")</code> để duy trì dữ liệu giữa các Request.</p>
+        <hr />
+
+        <div class="alert alert-info">
+            <strong>Nội dung trong TempData["PersistentMsg"]:</strong>
+            <p class="fs-5 mt-2 mb-0">@TempData["PersistentMsg"]</p>
+        </div>
+
+        <div class="mt-3">
+            <a asp-action="ShowKeep" class="btn btn-secondary me-2">Tải Lại Trang (Reload Request)</a>
+            <a asp-action="Index" class="btn btn-primary">Quay lại TempData Demo</a>
+        </div>
+    </div>
+</div>

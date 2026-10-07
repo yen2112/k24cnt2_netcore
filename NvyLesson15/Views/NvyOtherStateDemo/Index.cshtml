@@ -1,0 +1,86 @@
+@{
+    ViewData["Title"] = "QueryString, Hidden Fields & HttpContext.Items Demo";
+}
+
+<div class="container mt-4">
+    <div class="p-4 rounded shadow-sm bg-light border mb-4">
+        <h2 class="text-secondary"><i class="bi bi-diagram-3"></i> Session 09: Các Kỹ Thuật Quản Lý Trạng Thái Khác</h2>
+        <p class="lead">Bao gồm QueryString, Hidden Fields trong Form, và HttpContext.Items (Lưu dữ liệu trong phạm vi 1 Request).</p>
+        <hr />
+
+        <div class="row">
+            <!-- 1. QueryString Demo -->
+            <div class="col-md-6 mb-4">
+                <div class="card border-primary h-100">
+                    <div class="card-header bg-primary text-white font-weight-bold">
+                        1. QueryString (Truyền tham số qua URL)
+                    </div>
+                    <div class="card-body">
+                        <p>Dữ liệu được đính kèm trên URL theo dạng <code>?key1=val1&key2=val2</code>.</p>
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item"><strong>Category (Danh mục):</strong> <span class="badge bg-info">@ViewBag.Category</span></li>
+                            <li class="list-group-item"><strong>Search Keyword (Từ khóa):</strong> <span class="badge bg-secondary">@ViewBag.SearchKeyword</span></li>
+                            <li class="list-group-item"><strong>Page (Trang):</strong> <span class="badge bg-success">@ViewBag.Page</span></li>
+                        </ul>
+
+                        <h6>Thử nghiệm đổi Tham số QueryString:</h6>
+                        <div class="btn-group flex-wrap" role="group">
+                            <a asp-action="Index" asp-route-category="DienThoai" asp-route-searchKeyword="iPhone" asp-route-page="1" class="btn btn-outline-primary btn-sm mb-1">Điện Thoại (Page 1)</a>
+                            <a asp-action="Index" asp-route-category="Laptop" asp-route-searchKeyword="Dell" asp-route-page="2" class="btn btn-outline-primary btn-sm mb-1">Laptop (Page 2)</a>
+                            <a asp-action="Index" asp-route-category="PhuKien" asp-route-searchKeyword="Tainghe" asp-route-page="3" class="btn btn-outline-primary btn-sm mb-1">Phụ Kiện (Page 3)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Hidden Fields Demo -->
+            <div class="col-md-6 mb-4">
+                <div class="card border-dark h-100">
+                    <div class="card-header bg-dark text-white font-weight-bold">
+                        2. Hidden Fields (Trường Ẩn Trong Form)
+                    </div>
+                    <div class="card-body">
+                        <p>Sử dụng thẻ <code>&lt;input type="hidden" /&gt;</code> để giữ lại giá trị ID hoặc thông tin không muốn hiển thị trên giao diện nhưng vẫn gửi đi khi POST form.</p>
+
+                        @if (ViewBag.HiddenFormSubmitted == true)
+                        {
+                            <div class="alert alert-success">
+                                <strong>Kết quả nhận từ Form Hidden:</strong>
+                                <p class="mb-1"><strong>ID Ẩn (Original ID):</strong> <code>@ViewBag.OriginalId</code></p>
+                                <p class="mb-0"><strong>Tên Cập Nhật:</strong> @ViewBag.UpdatedName</p>
+                            </div>
+                        }
+
+                        <form asp-action="SubmitHiddenForm" method="post">
+                            <!-- Hidden input field -->
+                            <input type="hidden" name="originalId" value="PROD-99887766-HIDDEN" />
+
+                            <div class="mb-3">
+                                <label class="form-label">Tên sản phẩm mới:</label>
+                                <input type="text" name="updatedName" class="form-control form-control-sm" value="Laptop Gaming ASUS ROG" required />
+                                <small class="form-text text-muted">ID sản phẩm (PROD-99887766-HIDDEN) đang được ẩn trong form.</small>
+                            </div>
+                            <button type="submit" class="btn btn-dark btn-sm">Gửi Form Có Hidden Field</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. HttpContext.Items Demo -->
+            <div class="col-12">
+                <div class="card border-secondary">
+                    <div class="card-header bg-secondary text-white font-weight-bold">
+                        3. HttpContext.Items (Lưu dữ liệu trong vòng đời 1 Request)
+                    </div>
+                    <div class="card-body">
+                        <p><code>HttpContext.Items</code> là một Dictionary cho phép chia sẻ dữ liệu giữa các Middleware, Controller, và View trong cùng một Request đơn lẻ. Dữ liệu tự động hủy khi Request kết thúc.</p>
+                        <div class="p-3 bg-light rounded border">
+                            <p class="mb-1"><strong>Thời gian bắt đầu Request:</strong> @Context.Items["RequestStartTime"]</p>
+                            <p class="mb-0"><strong>Xử lý bởi Controller/Action:</strong> <code>@Context.Items["ProcessedBy"]</code></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

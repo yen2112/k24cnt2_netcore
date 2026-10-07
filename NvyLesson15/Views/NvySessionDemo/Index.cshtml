@@ -1,0 +1,153 @@
+@model IEnumerable<NvyLesson15.Models.Product>
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "Demo Session (Server-side State)";
+    var currentUser = ViewBag.CurrentUser as NvyLesson15.Models.UserLogin;
+    var cart = ViewBag.Cart as List<NvyLesson15.Models.CartItem> ?? new List<NvyLesson15.Models.CartItem>();
+}
+
+<div class="container mt-4">
+    <div class="p-4 rounded shadow-sm bg-light border mb-4">
+        <h2 class="text-success"><i class="bi bi-hdd-network"></i> Session 09: Quản lý trạng thái bằng Session</h2>
+        <p class="lead">Session được lưu ở Server-side, liên kết với Client thông qua Cookie <code>.AspNetCore.Session</code> (Session ID).</p>
+        <hr />
+
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <i class="bi bi-check-circle"></i> @TempData["Success"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="bi bi-exclamation-triangle"></i> @TempData["Error"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        <div class="row mb-4">
+            <!-- Information Box -->
+            <div class="col-md-6">
+                <div class="card border-success mb-3">
+                    <div class="card-header bg-success text-white">
+                        <strong><i class="bi bi-person-badge"></i> Thông tin Session Hiện Tại</strong>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Session ID:</strong> <code>@ViewBag.SessionId</code></p>
+                        <p><strong>Số lượt truy cập trang (Counter):</strong> <span class="badge bg-primary fs-6">@ViewBag.Counter</span></p>
+
+                        <hr />
+
+                        @if (currentUser != null)
+                        {
+                            <div class="alert alert-info mb-2">
+                                <h5><i class="bi bi-person-circle"></i> User Đã Đăng Nhập (Lưu Đối Tượng JSON):</h5>
+                                <p class="mb-1"><strong>Tài khoản:</strong> @currentUser.Username</p>
+                                <p class="mb-1"><strong>Họ tên:</strong> @currentUser.FullName</p>
+                                <p class="mb-1"><strong>Email:</strong> @currentUser.Email</p>
+                                <p class="mb-1"><strong>Quyền:</strong> <span class="badge bg-warning text-dark">@currentUser.Role</span></p>
+                                <p class="mb-0"><strong>Thời gian đăng nhập:</strong> @currentUser.LoginTime.ToString("HH:mm:ss dd/MM/yyyy")</p>
+                            </div>
+                            <a asp-action="Logout" class="btn btn-outline-danger">Đăng Xuất Session</a>
+                        }
+                        else
+                        {
+                            <h5><i class="bi bi-lock"></i> Đăng Nhập Giả Lập Vào Session</h5>
+                            <form asp-action="Login" method="post" class="mt-2">
+                                <div class="mb-2">
+                                    <input type="text" name="username" class="form-control form-control-sm" placeholder="Tên đăng nhập (ví dụ: devmaster)" required />
+                                </div>
+                                <div class="mb-2">
+                                    <input type="text" name="fullName" class="form-control form-control-sm" placeholder="Họ và tên..." />
+                                </div>
+                                <div class="mb-2">
+                                    <select name="role" class="form-select form-select-sm">
+                                        <option value="Admin">Quản trị viên (Admin)</option>
+                                        <option value="Member">Thành viên (Member)</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-sm btn-success">Đăng Nhập Session</button>
+                            </form>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shopping Cart Session Demo -->
+            <div class="col-md-6">
+                <div class="card border-warning">
+                    <div class="card-header bg-warning text-dark d-flex justify-content-between align-items-center">
+                        <strong><i class="bi bi-cart3"></i> Giỏ Hàng Demo (Session State)</strong>
+                        @if (cart.Any())
+                        {
+                            <a asp-action="ClearCart" class="btn btn-sm btn-outline-dark">Xóa Giỏ Hàng</a>
+                        }
+                    </div>
+                    <div class="card-body">
+                        @if (!cart.Any())
+                        {
+                            <p class="text-muted text-center py-3">Giỏ hàng trong Session đang trống.</p>
+                        }
+                        else
+                        {
+                            <table class="table table-sm align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>Sản phẩm</th>
+                                        <th>Đơn giá</th>
+                                        <th>SL</th>
+                                        <th>Thành tiền</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in cart)
+                                    {
+                                        <tr>
+                                            <td>@item.Product.Name</td>
+                                            <td>@item.Product.Price.ToString("N0") đ</td>
+                                            <td><span class="badge bg-secondary">@item.Quantity</span></td>
+                                            <td><strong>@item.TotalPrice.ToString("N0") đ</strong></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr class="table-warning">
+                                        <td colspan="3" class="text-end"><strong>Tổng cộng:</strong></td>
+                                        <td><strong class="text-danger fs-6">@cart.Sum(c => c.TotalPrice).ToString("N0") đ</strong></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sample Products List -->
+        <h4 class="mt-4 text-dark"><i class="bi bi-bag"></i> Danh Sách Sản Phẩm Demo Add To Session Cart</h4>
+        <div class="row">
+            @foreach (var p in Model)
+            {
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="card h-100 shadow-sm">
+                        <img src="@p.ImageUrl" class="card-img-top" alt="@p.Name" style="height: 140px; object-fit: cover;" />
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div>
+                                <h6 class="card-title">@p.Name</h6>
+                                <p class="card-text text-danger font-weight-bold">@p.Price.ToString("N0") đ</p>
+                            </div>
+                            <a asp-action="AddToCart" asp-route-id="@p.Id" class="btn btn-sm btn-primary w-100 mt-2">
+                                <i class="bi bi-cart-plus"></i> Thêm vào Giỏ Session
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

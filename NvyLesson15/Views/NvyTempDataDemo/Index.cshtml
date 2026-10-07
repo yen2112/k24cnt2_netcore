@@ -1,0 +1,64 @@
+@{
+    ViewData["Title"] = "Demo TempData (Post-Redirect-Get)";
+}
+
+<div class="container mt-4">
+    <div class="p-4 rounded shadow-sm bg-light border mb-4">
+        <h2 class="text-warning text-dark"><i class="bi bi-lightning-charge"></i> Session 09: Quản lý trạng thái bằng TempData</h2>
+        <p class="lead">TempData dùng để lưu TẠM dữ liệu giữa 2 request liên tiếp (thường áp dụng trong mô hình Post -> Redirect -> Get / PRG Pattern).</p>
+        <hr />
+
+        <!-- TempData display area -->
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <h5><i class="bi bi-check-circle"></i> Thông báo thành công từ TempData:</h5>
+                <p class="mb-0">@TempData["SuccessMessage"]</p>
+                <small class="text-muted">Tạo lúc: @TempData["CreateTime"]</small>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <h5><i class="bi bi-x-circle"></i> Thông báo lỗi từ TempData:</h5>
+                <p class="mb-0">@TempData["ErrorMessage"]</p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-header bg-warning text-dark">
+                        <strong><i class="bi bi-send"></i> Gửi Dữ Liệu Qua PRG (Post -> Redirect -> Get)</strong>
+                    </div>
+                    <div class="card-body">
+                        <form asp-action="SaveData" method="post">
+                            <div class="mb-3">
+                                <label class="form-label">Nhập tin nhắn/thông báo:</label>
+                                <input type="text" name="message" class="form-control" placeholder="Ví dụ: Đã thêm mới sinh viên thành công!" />
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                Submit Form & Redirect (Kiểm tra TempData)
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <div class="card border-info">
+                    <div class="card-header bg-info text-white">
+                        <strong><i class="bi bi-bookmark-check"></i> Demo TempData.Keep()</strong>
+                    </div>
+                    <div class="card-body">
+                        <p>Thông thường TempData sẽ tự động xóa sau khi được đọc ở 1 Request. Khi dùng <code>TempData.Keep()</code>, dữ liệu sẽ được bảo toàn qua nhiều Request tiếp theo.</p>
+                        <a asp-action="TestKeep" class="btn btn-outline-info">Thử nghiệm TempData.Keep()</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
