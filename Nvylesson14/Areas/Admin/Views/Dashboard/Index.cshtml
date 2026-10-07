@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-3 border-bottom">
+    <h2 class="h2">Dashboard</h2>
+</div>
+
+<p>Đây là nội dung trang chủ Admin (Labguide 07 - ASP.NET Core MVC).</p>
+
+<!-- Các khối thống kê đơn giản -->
+<div class="row mt-4">
+    <div class="col-md-3 mb-3">
+        <div class="card text-white bg-primary">
+            <div class="card-body">
+                <h5 class="card-title">Category</h5>
+                <h2 class="card-text">@ViewBag.CategoryCount</h2>
+                <a asp-area="Admin" asp-controller="Category" asp-action="Index" class="text-white text-decoration-none small">Chi tiết &rarr;</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card text-white bg-success">
+            <div class="card-body">
+                <h5 class="card-title">Product</h5>
+                <h2 class="card-text">@ViewBag.ProductCount</h2>
+                <a asp-area="Admin" asp-controller="Product" asp-action="Index" class="text-white text-decoration-none small">Chi tiết &rarr;</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card text-white bg-warning">
+            <div class="card-body">
+                <h5 class="card-title text-dark">Banner</h5>
+                <h2 class="card-text text-dark">@ViewBag.BannerCount</h2>
+                <a asp-area="Admin" asp-controller="Banner" asp-action="Index" class="text-dark text-decoration-none small">Chi tiết &rarr;</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card text-white bg-info">
+            <div class="card-body">
+                <h5 class="card-title">Blog</h5>
+                <h2 class="card-text">@ViewBag.BlogCount</h2>
+                <a asp-area="Admin" asp-controller="Blog" asp-action="Index" class="text-white text-decoration-none small">Chi tiết &rarr;</a>
+            </div>
+        </div>
+    </div>
+</div>

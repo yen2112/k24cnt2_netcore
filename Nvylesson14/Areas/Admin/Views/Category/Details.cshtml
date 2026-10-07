@@ -1,0 +1,93 @@
+@model Nvylesson14.Models.Category
+@{
+    ViewData["Title"] = "Chi Tiết Danh Mục";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h3 class="fw-bold mb-1">Chi Tiết Danh Mục: @Model.Name</h3>
+        <p class="text-muted mb-0">Xem thông tin chi tiết và danh sách sản phẩm thuộc danh mục</p>
+    </div>
+    <div class="d-flex gap-2">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning text-white rounded-pill px-3">
+            <i class="fa-solid fa-pen-to-square me-1"></i> Chỉnh sửa
+        </a>
+        <a asp-action="Index" class="btn btn-outline-secondary rounded-pill px-3">
+            <i class="fa-solid fa-arrow-left me-1"></i> Quay lại
+        </a>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-4">
+        <div class="card card-custom p-4 text-center">
+            <img src="@Model.Image" class="rounded-3 border mb-3 mx-auto img-fluid" style="max-height: 200px; object-fit: cover;" alt="@Model.Name" onerror="this.src='https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300'" />
+            <h4 class="fw-bold mb-1">@Model.Name</h4>
+            <p class="text-muted small mb-3">Mã danh mục: #@Model.Id</p>
+            <div class="mb-3">
+                @if (Model.Status == 1)
+                {
+                    <span class="badge bg-success-subtle text-success border border-success px-3 py-2 rounded-pill">
+                        <i class="fa-solid fa-check me-1"></i>Đang hiển thị
+                    </span>
+                }
+                else
+                {
+                    <span class="badge bg-secondary-subtle text-secondary border px-3 py-2 rounded-pill">
+                        <i class="fa-solid fa-eye-slash me-1"></i>Tạm ẩn
+                    </span>
+                }
+            </div>
+            <div class="border-top pt-3 text-start">
+                <p class="mb-1 text-muted"><strong>Ngày tạo:</strong> @Model.CreatedDate.ToString("dd/MM/yyyy")</p>
+                <p class="mb-0 text-muted"><strong>Mô tả:</strong> @(string.IsNullOrEmpty(Model.Description) ? "Không có mô tả" : Model.Description)</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-8">
+        <div class="card card-custom p-4">
+            <h5 class="fw-bold mb-3">
+                <i class="fa-solid fa-boxes-stacked text-primary me-2"></i>Sản phẩm thuộc danh mục (@(Model.Products?.Count ?? 0))
+            </h5>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Ảnh</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Giá bán</th>
+                            <th>Trạng thái</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Products == null || !Model.Products.Any())
+                        {
+                            <tr>
+                                <td colspan="4" class="text-center text-muted py-3">Chưa có sản phẩm nào trong danh mục này.</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            @foreach (var p in Model.Products)
+                            {
+                                <tr>
+                                    <td>
+                                        <img src="@p.Image" class="rounded border" style="width: 40px; height: 40px; object-fit: cover;" onerror="this.src='https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=100'" alt="@p.Name" />
+                                    </td>
+                                    <td class="fw-semibold">@p.Name</td>
+                                    <td class="text-primary fw-bold">@p.Price.ToString("N0") đ</td>
+                                    <td>
+                                        <span class="badge bg-@(p.Status == 1 ? "success" : "secondary")">
+                                            @(p.Status == 1 ? "Hiển thị" : "Ẩn")
+                                        </span>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

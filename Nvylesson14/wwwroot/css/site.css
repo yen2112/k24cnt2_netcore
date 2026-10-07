@@ -1,0 +1,100 @@
+/* Custom Global Styles for Lê Gia Bảo Web */
+body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #2b3445;
+    background-color: #f8fafc;
+}
+
+/* Typography & Links */
+a {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Navbar Tweaks */
+.navbar-dark .nav-link {
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.navbar-dark .nav-link:hover, 
+.navbar-dark .nav-link.active {
+    color: #0dcaf0 !important;
+}
+
+/* Card Improvements */
+.card {
+    transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08) !important;
+}
+
+.transition-all {
+    transition: all 0.3s ease;
+}
+
+.hover-shadow:hover {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    background-color: #ffffff !important;
+}
+
+/* Buttons */
+.btn {
+    font-weight: 500;
+    padding: 0.5rem 1.25rem;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+    transform: translateY(-1px);
+}
+
+/* Contact Card Custom Styling */
+.custom-contact-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+@media (min-width: 768px) {
+    .border-end-md {
+        border-right: 1px solid rgba(0, 0, 0, 0.08) !important;
+    }
+}
+
+/* Form Fields */
+.form-control, .form-select {
+    padding: 0.65rem 1rem;
+    border-color: #e2e8f0;
+    font-size: 0.95rem;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+/* Product & Blog Card Styling */
+.product-card {
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Badges */
+.badge {
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}

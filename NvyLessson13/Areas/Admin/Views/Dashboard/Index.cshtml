@@ -1,0 +1,65 @@
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2><i class="bi bi-speedometer2 text-primary me-2"></i> Bảng Điều Khiển Admin</h2>
+        <span class="badge bg-success fs-6">Layout: _LayoutAdmin.cshtml</span>
+    </div>
+
+    <div class="row g-3 mb-4">
+        <div class="col-md-3">
+            <div class="card text-white bg-primary shadow-sm card-hover">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-people me-2"></i> Người Dùng</h5>
+                    <p class="card-text fs-3 fw-bold">1,248</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-success shadow-sm card-hover">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-cart-check me-2"></i> Đơn Hàng</h5>
+                    <p class="card-text fs-3 fw-bold">534</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-warning shadow-sm card-hover">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-box-seam me-2"></i> Sản Phẩm</h5>
+                    <p class="card-text fs-3 fw-bold">89</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-danger shadow-sm card-hover">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-graph-up-arrow me-2"></i> Doanh Thu</h5>
+                    <p class="card-text fs-3 fw-bold">$42,500</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-white font-weight-bold">
+            💡 Demo Kiến Thức Session 07 - Layout trong Admin Area
+        </div>
+        <div class="card-body">
+            <p>Trang này nằm trong <code>Areas/Admin/Views/Dashboard/Index.cshtml</code> và tự động nạp Custom Layout dành riêng cho Admin:</p>
+            <ul>
+                <li>Layout được cấu hình trong <code>Areas/Admin/Views/_ViewStart.cshtml</code>: <code>Layout = "_LayoutAdmin";</code></li>
+                <li>Giao diện Admin có thanh Sidebar bên trái, Top Navbar, và vùng nội dung chính linh hoạt.</li>
+                <li>Dễ dàng quản lý độc lập với giao diện phía người dùng (User Layout).</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        console.log("Scripts section executed inside Admin Dashboard View!");
+    </script>
+}

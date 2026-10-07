@@ -1,0 +1,76 @@
+@model IEnumerable<Nvylesson14.Models.Blog>
+@{
+    ViewData["Title"] = "Quản lý Bài viết";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Blog Index</h2>
+    <a asp-action="Create" class="btn btn-info text-white">Thêm mới Blog</a>
+</div>
+
+<p class="text-muted">Danh sách bài viết tin tức</p>
+
+<!-- Form tìm kiếm đơn giản -->
+<form asp-action="Index" method="get" class="row g-2 mb-3">
+    <div class="col-auto">
+        <input type="text" name="searchString" value="@ViewBag.SearchString" class="form-control" placeholder="Tìm tiêu đề..." />
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-secondary">Tìm kiếm</button>
+    </div>
+</form>
+
+<table class="table table-bordered table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Ảnh bìa</th>
+            <th>Tiêu đề bài viết</th>
+            <th>Trạng thái</th>
+            <th>Ngày tạo</th>
+            <th>Tóm tắt nội dung</th>
+            <th style="width: 200px;">Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (!Model.Any())
+        {
+            <tr>
+                <td colspan="7" class="text-center text-muted">Không có dữ liệu</td>
+            </tr>
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(item.Image))
+                        {
+                            <img src="@item.Image" width="60" height="50" style="object-fit: cover;" />
+                        }
+                    </td>
+                    <td><strong>@item.Name</strong></td>
+                    <td>
+                        @if (item.Status == 1)
+                        {
+                            <span class="badge bg-success">Công khai</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">Bản nháp</span>
+                        }
+                    </td>
+                    <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
+                    <td>@item.Description</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Sửa</a>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Xem</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Xóa</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

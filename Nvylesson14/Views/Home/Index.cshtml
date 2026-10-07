@@ -1,0 +1,80 @@
+@{
+    ViewData["Title"] = "Trang Chủ";
+}
+
+<!-- Hero Section -->
+<div class="hero-section rounded-4 p-5 text-white mb-5 position-relative overflow-hidden shadow-lg" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 1px solid rgba(255,255,255,0.1);">
+    <div class="hero-bg-shapes"></div>
+    <div class="row align-items-center py-4 position-relative z-1">
+        <div class="col-lg-8">
+            <span class="badge bg-primary bg-opacity-20 text-primary border border-primary-subtle rounded-pill px-3 py-2 mb-3">
+                <i class="fa-solid fa-sparkles me-1"></i> Web Application Platform
+            </span>
+            <h1 class="display-4 fw-bold mb-3">Hệ Thống Quản Lý & Cửa Hàng Web</h1>
+            <p class="fs-5 opacity-75 mb-4 max-w-600">
+                Nền tảng ứng dụng Web hiện đại với đầy đủ chức năng quản lý danh mục, sản phẩm, tin tức và bảng điều khiển quản trị.
+            </p>
+            <div class="d-flex flex-wrap gap-3">
+                <a class="btn btn-primary btn-lg rounded-pill px-4 shadow-sm" asp-controller="Home" asp-action="Products">
+                    <i class="fa-solid fa-store me-2"></i>Xem Sản Phẩm
+                </a>
+                <a class="btn btn-outline-light btn-lg rounded-pill px-4" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">
+                    <i class="fa-solid fa-gauge-high me-2"></i>Trang Quản Trị
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-4 text-center mt-4 mt-lg-0">
+            <div class="hero-icon-box bg-white bg-opacity-10 p-4 rounded-4 backdrop-blur d-inline-block shadow-sm">
+                <i class="fa-solid fa-cubes text-info display-1"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Feature Cards -->
+<div class="row g-4 mb-5">
+    <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm rounded-4 hover-lift transition-all">
+            <div class="card-body p-4 text-center">
+                <div class="icon-circle bg-primary-subtle text-primary mb-3 mx-auto rounded-circle d-flex align-items-center justify-content-center" style="width: 70px; height: 70px; font-size: 1.8rem;">
+                    <i class="fa-solid fa-box-open"></i>
+                </div>
+                <h4 class="fw-bold mb-2">Cửa Hàng Sản Phẩm</h4>
+                <p class="text-muted mb-4 small">Khám phá danh sách sản phẩm công nghệ đa dạng, tìm kiếm và lọc theo danh mục nhanh chóng.</p>
+                <a asp-controller="Home" asp-action="Products" class="btn btn-outline-primary rounded-pill btn-sm px-4">
+                    Khám phá ngay <i class="fa-solid fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm rounded-4 hover-lift transition-all">
+            <div class="card-body p-4 text-center">
+                <div class="icon-circle bg-success-subtle text-success mb-3 mx-auto rounded-circle d-flex align-items-center justify-content-center" style="width: 70px; height: 70px; font-size: 1.8rem;">
+                    <i class="fa-solid fa-newspaper"></i>
+                </div>
+                <h4 class="fw-bold mb-2">Tin Tức & Blog</h4>
+                <p class="text-muted mb-4 small">Cập nhật những bài viết, tin tức công nghệ và hướng dẫn mới nhất được phát hành.</p>
+                <a asp-controller="Home" asp-action="Blog" class="btn btn-outline-success rounded-pill btn-sm px-4">
+                    Đọc bài viết <i class="fa-solid fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm rounded-4 hover-lift transition-all">
+            <div class="card-body p-4 text-center">
+                <div class="icon-circle bg-warning-subtle text-warning mb-3 mx-auto rounded-circle d-flex align-items-center justify-content-center" style="width: 70px; height: 70px; font-size: 1.8rem;">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <h4 class="fw-bold mb-2">Vùng Quản Trị</h4>
+                <p class="text-muted mb-4 small">Bảng điều khiển Admin giúp quản lý dữ liệu danh mục, sản phẩm, banner và bài viết.</p>
+                <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index" class="btn btn-outline-warning rounded-pill btn-sm px-4">
+                    Vào trang Admin <i class="fa-solid fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Quản Trị Hệ Thống</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/custom.css" asp-append-version="true" />
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+    <div class="d-flex min-vh-100">
+        <!-- Sidebar Admin -->
+        <div class="admin-sidebar p-3" style="width: 260px;">
+            <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index" class="d-flex align-items-center mb-3 text-white text-decoration-none fs-4">
+                <i class="bi bi-shield-lock me-2 text-warning"></i>
+                <span class="fw-bold">Admin Portal</span>
+            </a>
+            <hr class="text-secondary">
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index" class="nav-link text-white active">
+                        <i class="bi bi-speedometer2 me-2"></i> Bảng Điều Khiển
+                    </a>
+                </li>
+                <li>
+                    <a asp-area="Admin" asp-controller="Product" asp-action="Index" class="nav-link text-white">
+                        <i class="bi bi-box-seam me-2"></i> Quản Lý Sản Phẩm
+                    </a>
+                </li>
+                <li class="mt-4">
+                    <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link text-warning bg-dark">
+                        <i class="bi bi-arrow-left-circle me-2"></i> Về Trang User
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Admin Content Area -->
+        <div class="flex-fill d-flex flex-column">
+            <!-- Navbar Admin Top -->
+            <nav class="navbar navbar-expand navbar-light bg-white border-bottom shadow-sm px-4">
+                <span class="navbar-brand mb-0 h1 text-primary">
+                    <i class="bi bi-gear-wide-connected me-1"></i> Custom Admin Layout (_LayoutAdmin.cshtml)
+                </span>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <span class="nav-link text-muted"><i class="bi bi-person-circle me-1"></i> Admin User</span>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Main Body -->
+            <main role="main" class="flex-fill p-4">
+                @RenderBody()
+            </main>
+
+            <!-- Footer Admin -->
+            <footer class="bg-white border-top text-center py-3 text-muted">
+                <small>&copy; 2026 Admin Portal - NvyLessson13 | Session 07 Layout Demo</small>
+            </footer>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/custom.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

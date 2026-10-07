@@ -1,0 +1,92 @@
+@{
+    ViewData["Title"] = "Liên Hệ";
+}
+
+<div class="row justify-content-center py-4">
+    <div class="col-lg-8">
+        <div class="text-center mb-4">
+            <h2 class="fw-bold display-6 text-primary mb-2">
+                <i class="fa-solid fa-address-card me-2"></i>Thông Tin Liên Hệ
+            </h2>
+            <p class="text-muted fs-6">Rất hân hạnh được kết nối và làm việc cùng bạn!</p>
+        </div>
+
+        <div class="card border-0 shadow-lg rounded-4 overflow-hidden mb-4 custom-contact-card">
+            <div class="card-body p-4 p-md-5">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-5 text-center border-end-md">
+                        <div class="avatar-wrapper mb-3">
+                            <div class="bg-gradient-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center shadow" style="width: 100px; height: 100px; font-size: 2.5rem; background: linear-gradient(135deg, #0d6efd, #0dcaf0);">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+                        </div>
+                        <h3 class="fw-bold mb-1">Lê Gia Bảo</h3>
+                        <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-3 py-2">Fullstack Developer</span>
+                    </div>
+
+                    <div class="col-md-7 ps-md-4">
+                        <div class="d-flex align-items-center mb-4 p-3 rounded-3 bg-light hover-shadow transition-all">
+                            <div class="contact-icon bg-primary bg-opacity-10 text-primary rounded-3 p-3 me-3">
+                                <i class="fa-solid fa-user-tag fs-4"></i>
+                            </div>
+                            <div>
+                                <small class="text-muted d-block text-uppercase fw-semibold" style="letter-spacing: 0.5px; font-size: 0.75rem;">Họ & Tên</small>
+                                <span class="fw-bold fs-5 text-dark">Lê Gia Bảo</span>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center mb-4 p-3 rounded-3 bg-light hover-shadow transition-all">
+                            <div class="contact-icon bg-danger bg-opacity-10 text-danger rounded-3 p-3 me-3">
+                                <i class="fa-solid fa-envelope fs-4"></i>
+                            </div>
+                            <div>
+                                <small class="text-muted d-block text-uppercase fw-semibold" style="letter-spacing: 0.5px; font-size: 0.75rem;">Email / Gmail</small>
+                                <a href="mailto:nvy2202@gmail.com" class="fw-bold fs-5 text-decoration-none text-danger">
+                                    nvy2202@gmail.com
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center p-3 rounded-3 bg-light hover-shadow transition-all">
+                            <div class="contact-icon bg-success bg-opacity-10 text-success rounded-3 p-3 me-3">
+                                <i class="fa-solid fa-circle-check fs-4"></i>
+                            </div>
+                            <div>
+                                <small class="text-muted d-block text-uppercase fw-semibold" style="letter-spacing: 0.5px; font-size: 0.75rem;">Trạng Thái</small>
+                                <span class="fw-semibold text-success"><i class="fa-solid fa-circle text-success me-1 small"></i> Sẵn sàng kết nối & hợp tác</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Gửi tin nhắn trực tiếp -->
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-body p-4">
+                <h5 class="fw-bold mb-3"><i class="fa-solid fa-paper-plane text-primary me-2"></i>Gửi Tin Nhắn Nhanh</h5>
+                <form onsubmit="event.preventDefault(); alert('Cảm ơn bạn đã gửi tin nhắn! Lê Gia Bảo sẽ phản hồi sớm nhất.');">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold">Họ tên của bạn</label>
+                            <input type="text" class="form-control rounded-3" placeholder="Nhập họ tên..." required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold">Email của bạn</label>
+                            <input type="email" class="form-control rounded-3" placeholder="nhapemail@example.com" required>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label small fw-semibold">Nội dung tin nhắn</label>
+                            <textarea class="form-control rounded-3" rows="3" placeholder="Nhập nội dung cần liên hệ..." required></textarea>
+                        </div>
+                        <div class="col-12 text-end">
+                            <button type="submit" class="btn btn-primary rounded-pill px-4 fw-semibold shadow-sm">
+                                <i class="fa-solid fa-paper-plane me-1"></i> Gửi Tin Nhắn
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

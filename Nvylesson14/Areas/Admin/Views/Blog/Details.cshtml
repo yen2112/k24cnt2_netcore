@@ -1,0 +1,52 @@
+@model Nvylesson14.Models.Blog
+@{
+    ViewData["Title"] = "Chi Tiết Bài Viết";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h3 class="fw-bold mb-1">Chi Tiết Bài Viết: @Model.Name</h3>
+        <p class="text-muted mb-0">Mã bài viết: #@Model.Id</p>
+    </div>
+    <div class="d-flex gap-2">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning text-white rounded-pill px-3">
+            <i class="fa-solid fa-pen-to-square me-1"></i> Chỉnh sửa
+        </a>
+        <a asp-action="Index" class="btn btn-outline-secondary rounded-pill px-3">
+            <i class="fa-solid fa-arrow-left me-1"></i> Quay lại
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card card-custom p-4">
+            <div class="mb-4">
+                <img src="@Model.Image" class="img-fluid rounded-3 border shadow-sm w-100" style="max-height: 350px; object-fit: cover;" alt="@Model.Name" onerror="this.src='https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800'" />
+            </div>
+
+            <div class="d-flex align-items-center gap-3 mb-3">
+                <span class="badge bg-info-subtle text-info border border-info px-3 py-2 rounded-pill">
+                    <i class="fa-regular fa-calendar me-1"></i> Ngày đăng: @Model.CreatedDate.ToString("dd/MM/yyyy")
+                </span>
+                @if (Model.Status == 1)
+                {
+                    <span class="badge bg-success-subtle text-success border border-success px-3 py-2 rounded-pill">
+                        <i class="fa-solid fa-check me-1"></i>Công khai
+                    </span>
+                }
+                else
+                {
+                    <span class="badge bg-secondary-subtle text-secondary border px-3 py-2 rounded-pill">
+                        <i class="fa-solid fa-eye-slash me-1"></i>Bản nháp
+                    </span>
+                }
+            </div>
+
+            <h3 class="fw-bold text-dark mb-3">@Model.Name</h3>
+            <div class="text-secondary lh-lg fs-6">
+                @(string.IsNullOrEmpty(Model.Description) ? "Chưa có nội dung tóm tắt cho bài viết này." : Model.Description)
+            </div>
+        </div>
+    </div>
+</div>

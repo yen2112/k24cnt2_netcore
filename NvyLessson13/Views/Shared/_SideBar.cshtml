@@ -1,0 +1,32 @@
+<div class="card shadow-sm mb-4">
+    <div class="card-header bg-primary text-white font-weight-bold">
+        <i class="bi bi-list-task me-1"></i> Danh Mục Chức Năng
+    </div>
+    <div class="list-group list-group-flush">
+        <a asp-area="" asp-controller="Home" asp-action="Index" class="list-group-item list-group-item-action">
+            📌 Layout Mặc Định (_Layout.cshtml)
+        </a>
+        <a asp-area="" asp-controller="Home" asp-action="TwoColumn" class="list-group-item list-group-item-action active">
+            📐 Layout 2 Cột (_Layout2Column.cshtml)
+        </a>
+        <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index" class="list-group-item list-group-item-action">
+            ⚙️ Area Admin (_LayoutAdmin.cshtml)
+        </a>
+    </div>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-header bg-info text-white">
+        💡 Kiến Thức Session 07
+    </div>
+    <div class="card-body">
+        <h6 class="card-title text-primary">Nội dung cốt lõi:</h6>
+        <ul class="small ps-3 mb-0">
+            <li><strong>_Layout.cshtml</strong>: Bố cục chung.</li>
+            <li><strong>@@RenderBody()</strong>: Nhúng thân trang.</li>
+            <li><strong>@@RenderSection()</strong>: Nhúng đoạn script/style tùy chọn.</li>
+            <li><strong>Partial Views</strong>: Tái sử dụng HTML.</li>
+            <li><strong>Areas</strong>: Phân chia khu vực ứng dụng.</li>
+        </ul>
+    </div>
+</div>

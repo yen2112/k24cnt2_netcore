@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Admin Control Panel</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <style>
+        .admin-sidebar {
+            min-height: calc(100vh - 110px);
+            background-color: #212529;
+            color: #fff;
+            padding: 15px 0;
+        }
+        .admin-sidebar .nav-link {
+            color: #adb5bd;
+            padding: 10px 20px;
+            border-radius: 4px;
+            margin: 2px 10px;
+        }
+        .admin-sidebar .nav-link:hover, .admin-sidebar .nav-link.active {
+            color: #fff;
+            background-color: #0d6efd;
+        }
+    </style>
+    @RenderSection("Css", required: false)
+</head>
+<body>
+    <!-- Header Admin -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">
+                    ADMIN PANEL
+                </a>
+                <div class="d-flex align-items-center">
+                    <a class="btn btn-sm btn-outline-light me-2" asp-area="" asp-controller="Home" asp-action="Index">
+                        Xem trang chủ Web
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar (Sử dụng ViewComponent NavLeft theo slide 22) -->
+            <div class="col-md-3 col-lg-2 px-0">
+                @await Component.InvokeAsync("NavLeft")
+            </div>
+
+            <!-- Nội dung chính RenderBody -->
+            <main class="col-md-9 col-lg-10 p-4">
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        @TempData["SuccessMessage"]
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer Admin -->
+    <footer class="bg-light text-center py-3 border-top mt-auto">
+        <p class="mb-0 text-muted">&copy; @DateTime.Now.Year - Trang Quản Trị Hệ Thống ASP.NET Core MVC</p>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

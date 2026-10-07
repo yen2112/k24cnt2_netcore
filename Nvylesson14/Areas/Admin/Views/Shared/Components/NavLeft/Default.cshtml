@@ -1,0 +1,34 @@
+@model Nvylesson14.Areas.Admin.Components.NavLeftViewModel
+
+<div class="admin-sidebar">
+    <div class="px-3 mb-3">
+        <small class="text-uppercase text-secondary fw-bold">Menu Quản Lý</small>
+    </div>
+    <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+            <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index" class="nav-link @(Model.ActiveController == "Dashboard" ? "active" : "")">
+                Bảng điều khiển
+            </a>
+        </li>
+        <li class="nav-item">
+            <a asp-area="Admin" asp-controller="Category" asp-action="Index" class="nav-link @(Model.ActiveController == "Category" ? "active" : "")">
+                Quản lý Category
+            </a>
+        </li>
+        <li class="nav-item">
+            <a asp-area="Admin" asp-controller="Product" asp-action="Index" class="nav-link @(Model.ActiveController == "Product" ? "active" : "")">
+                Quản lý Product
+            </a>
+        </li>
+        <li class="nav-item">
+            <a asp-area="Admin" asp-controller="Banner" asp-action="Index" class="nav-link @(Model.ActiveController == "Banner" ? "active" : "")">
+                Quản lý Banner
+            </a>
+        </li>
+        <li class="nav-item">
+            <a asp-area="Admin" asp-controller="Blog" asp-action="Index" class="nav-link @(Model.ActiveController == "Blog" ? "active" : "")">
+                Quản lý Blog
+            </a>
+        </li>
+    </ul>
+</div>

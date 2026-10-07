@@ -1,0 +1,82 @@
+@{
+    ViewData["Title"] = "Trang Chủ - Session 07 Layout";
+}
+
+<div class="py-4 text-center bg-white rounded shadow-sm mb-4 border">
+    <h1 class="display-5 text-primary fw-bold">
+        <i class="bi bi-layout-text-window-reverse me-2"></i> Session 07: Tìm Hiểu Về Layout
+    </h1>
+    <p class="lead text-muted">Thực hành xây dựng & quản lý Bố Cục (Layout), Partial View, RenderSection và Areas trong ASP.NET Core MVC</p>
+    <div class="d-flex justify-content-center gap-2 mt-3">
+        <a asp-controller="Home" asp-action="TwoColumn" class="btn btn-primary">
+            <i class="bi bi-layout-split me-1"></i> Xem Custom Layout 2 Cột
+        </a>
+        <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index" class="btn btn-dark">
+            <i class="bi bi-shield-lock me-1"></i> Xem Area Admin (_LayoutAdmin)
+        </a>
+    </div>
+</div>
+
+<div class="row g-4 mb-4">
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm border-primary card-hover">
+            <div class="card-header bg-primary text-white font-weight-bold">
+                <i class="bi bi-file-earmark-code me-1"></i> 1. Layout View & RenderBody
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    Khung giao diện chung được định nghĩa tại <code>_Layout.cshtml</code>. Mọi trang con khi gọi <code>@@RenderBody()</code> sẽ tự động nhúng nội dung vào vị trí tương ứng.
+                </p>
+                <span class="badge bg-info">_Layout.cshtml</span>
+                <span class="badge bg-secondary">_ViewStart.cshtml</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm border-success card-hover">
+            <div class="card-header bg-success text-white font-weight-bold">
+                <i class="bi bi-puzzle me-1"></i> 2. Partial Views
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    Chia nhỏ giao diện thành các tệp nhúng tái sử dụng nhiều nơi (như Header, Footer, Sidebar) bằng cú pháp <code>&lt;partial name="_Header" /&gt;</code>.
+                </p>
+                <span class="badge bg-success">_Header.cshtml</span>
+                <span class="badge bg-success">_Footer.cshtml</span>
+                <span class="badge bg-success">_SideBar.cshtml</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm border-warning card-hover">
+            <div class="card-header bg-warning text-dark font-weight-bold">
+                <i class="bi bi-code-square me-1"></i> 3. RenderSection & Custom Assets
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    Cho phép từng View con bổ sung mã JavaScript hoặc CSS riêng vào Layout bằng khối <code>@@section Styles { ... }</code> và <code>@@section Scripts { ... }</code>.
+                </p>
+                <span class="badge bg-warning text-dark">RenderSectionAsync</span>
+                <span class="badge bg-secondary">custom.css / custom.js</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow-sm border-0 bg-light">
+    <div class="card-body">
+        <h5 class="card-title text-primary"><i class="bi bi-info-circle me-1"></i> Hướng Dẫn Thao Tác</h5>
+        <ul class="mb-0">
+            <li>Thử click chọn nút <strong>"Custom Layout 2 Cột"</strong> để xem trang hiển thị sử dụng tệp <code>_Layout2Column.cshtml</code>.</li>
+            <li>Thử click chọn nút <strong>"Trang Quản Trị (Admin Area)"</strong> để xem trang quản trị riêng biệt sử dụng tệp <code>_LayoutAdmin.cshtml</code>.</li>
+        </ul>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        console.log("Index View: Scripts section loaded successfully!");
+    </script>
+}

@@ -1,0 +1,36 @@
+/* Custom CSS for Session 07 Layout Demo */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.layout-demo-box {
+    border: 2px dashed #0d6efd;
+    background-color: #e7f1ff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.admin-sidebar {
+    min-height: calc(100vh - 56px);
+    background-color: #212529;
+    color: #ffffff;
+}
+
+.admin-sidebar .nav-link {
+    color: #rgba(255, 255, 255, 0.8);
+    padding: 12px 20px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+}
+
+.admin-sidebar .nav-link:hover, .admin-sidebar .nav-link.active {
+    background-color: #0d6efd;
+    color: #ffffff;
+}
+
+.card-hover:hover {
+    transform: translateY(-3px);
+    transition: transform 0.2s ease-in-out;
+}
